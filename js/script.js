@@ -103,7 +103,10 @@ function loadProducts(category = "all") {
             <div class="bg-gray-300 pb-3 flex items-center justify-center rounded-t-md rounded-r-md">
               <img src="${product.image}" class="h-40 object-contain mb-4">
             </div>
-            <p class="text-xs bg-blue-100 inline-block px-3 py-1 mt-2 rounded-full">${product.category}</p>
+            <div class="flex justify-between items-center">
+              <p class="text-xs bg-blue-100 inline-block text-blue-600 px-3 py-1 mt-2 rounded-full">${product.category}</p>
+              <h3><i class="fa-solid fa-star text-yellow-300 pr-2"></i>${product.rating.rate}</h3>
+            </div>  
             <h4 class="font-semibold mb-2">${product.title}</h4>
             <p class="text-blue-600 font-bold text-xl mb-3">$${product.price}</p>
 
