@@ -79,8 +79,9 @@ function setActiveCategoryButton(category) {
     }
   });
 }
-
+// Load Products
 function loadProducts(category = "all") {
+
   let url = "https://fakestoreapi.com/products";
   if (category !== "all") {
     url = `https://fakestoreapi.com/products/category/${category}`;
@@ -90,32 +91,102 @@ function loadProducts(category = "all") {
     .then(res => res.json())
     .then(data => {
 
-      console.log(data)
       const productsDiv = document.getElementById("products");
       if (!productsDiv) return;
 
       let html = "";
+
       data.forEach(product => {
         html += `
-          <div class="card bg-gray-200 shadow p-4 ">
-          <img src="${product.image}" class="h-48 w-full object-cover mb-4">
-            <div class="border-t-2 ">
-              <p class="font-semibold rounded-lg">${product.category}</p>
-            <h4 class=" font-semibold mb-2 ">${product.title}</h4>
-            <p class="price text-blue-600 font-bold mt-auto text-xl">$${product.price}</p>
+          <div class="card bg-white shadow-lg p-4 rounded-lg flex flex-col">
+            
+            <div class="bg-gray-300 pb-3 flex items-center justify-center rounded-t-md rounded-r-md">
+              <img src="${product.image}" class="h-40 object-contain mb-4">
+            </div>
+            <p class="text-xs bg-blue-100 inline-block px-3 py-1 mt-2 rounded-full">${product.category}</p>
+            <h4 class="font-semibold mb-2">${product.title}</h4>
+            <p class="text-blue-600 font-bold text-xl mb-3">$${product.price}</p>
+
             <div class="flex justify-between items-center">
-              <div><button class="px-4 py-1 border-1 border-gray-300">Detailse</button></div>
-              <div class="px-4 py-1 border-1 bg-blue-500">Add</div>
+            <button  
+              class="detail-btn bg-gray-400 font-semibold text-white px-4 py-1 cursor-pointer rounded-md mt-auto"
+              data-id="${product.id}"><i class="fa-solid fa-eye-slash"></i>
+              Details
+            </button>
+            <button class="detail-btn bg-green-400 font-semibold text-white px-4 py-1 cursor-pointer rounded-md mt-auto">Add</button>
             </div>
-            </div>
+
           </div>
         `;
       });
 
       productsDiv.innerHTML = html;
-      setActiveCategoryButton(category);
     });
 }
+
+
+
+//  Modal Logic 
+document.addEventListener("DOMContentLoaded", function(){
+
+  const modal = document.getElementById("modal");
+  const modalBody = document.getElementById("modal-body");
+  const closeBtn = document.getElementById("closeBtn");
+
+
+  function showModal(id){
+
+    fetch(`https://fakestoreapi.com/products/${id}`)
+      .then(res => res.json())
+      .then(product => {
+
+        modalBody.innerHTML = `
+          <img src="${product.image}" class="h-40 mx-auto mb-4">
+          <h2 class="text-lg font-bold mb-2 mt-2 border-t-2 border-gray-400">${product.title}</h2>
+          <p class="text-gray-600 mb-2">${product.description}</p>
+          <h3 class="text-blue-600 font-bold text-xl">$${product.price}</h3>
+        `;
+
+        modal.classList.remove("hidden");
+      });
+  }
+
+
+  // Click Event
+  document.addEventListener("click", function(e){
+    if(e.target.classList.contains("detail-btn")){
+      const id = e.target.getAttribute("data-id");
+      showModal(id);
+    }
+  });
+
+
+  // Close Button
+  closeBtn.addEventListener("click", function(){
+    modal.classList.add("hidden");
+  });
+
+
+  // Click Outside
+  window.addEventListener("click", function(e){
+    if(e.target === modal){
+      modal.classList.add("hidden");
+    }
+  });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
 document.addEventListener("click", function(e){
   if(e.target.classList.contains("cat-btn")){
     const category = e.target.getAttribute("data-cat");

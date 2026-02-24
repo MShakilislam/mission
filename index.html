@@ -55,7 +55,7 @@
                 </div>
             </div>
         </section>
-        <!-- hime section  -->
+        <!-- home section  -->
 
 
         <section class="max-w-[1200px] mx-auto">
@@ -65,14 +65,68 @@
         </section>
 
     </main>
-    
-    <!-- <section>
-        <div class="max-w-[1200px] mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-4">
-                <div id="products" class="products"></div>
-            </div>
+    <!-- modal card -->
+    <div id="modal" class="hidden fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+        <div class="bg-white p-6 rounded-lg w-[90%] max-w-[500px] relative ">
+            <span id="closeBtn" class="absolute right-3 top-2 cursor-pointer text-2xl">&times;</span>
+            <div id="modal-body"></div>
         </div>
-    </section> -->
+    </div>
+    <footer class="bg-gray-900">
+        <div class="max-w-[1200px] mx-auto py-5">
+            <div class="grid md:grid-cols-3 grid-cols-1 gap-4 text-gray-300 mx-2 pb-2">
+                <div class="md:flex justify-between gap-6">
+                    <div>
+                        <h2 class="font-semibold text-blue-500 text-3xl">SwiftCart</h2>
+                        <p class="pt-5">Your one-stop shop for all your fashion and lifestyle needs. Quality products,
+                            fast delivery, and wxcellent support.</p>
+                    </div>
+                    <div class="text-center">
+                        <h2 class="font-semibold text-xl ">quickLink</h2>
+                        <ul class="pt-3">
+                            <li class="font-semibold text-xl pt-3">Home</li>
+                            <li class="font-semibold text-xl pt-3">Products</li>
+                            <li class="font-semibold text-xl pt-3">About</li>
+                            <li class="font-semibold text-xl pt-3">Contact</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <h2 class="uppercase font-semibold">Support</h2>
+                    <ul class="pt-3">
+                        <li class="font-semibold text-xl pt-3">Faq</li>
+                        <li class="font-semibold text-xl pt-3">Shipping</li>
+                        <li class="font-semibold text-xl pt-3">Returns</li>
+                        <li class="font-semibold text-xl pt-3">Privacy Policy</li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="text-2xl md:text-2xl font-bold text-gray-200 uppercase tracking-wide">
+                        Subscribe to our newsletter</h2>
+                    <p class="text-gray-400 mt-4 max-w-xl mx-auto">The latest news, articles, and resources, sent to
+                        your inbox weekly.</p>
+                    <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
+                        <input type="email" placeholder="Enter your email"
+                            class="w-full sm:w-[320px] px-4 py-3 rounded-lg bg-gray-200 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+
+                        <button
+                            class="px-6 py-3 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition duration-300">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="text-gray-400 flex justify-between items-center py-3 border-t-1 border-gray-300">
+                    <p>&Copy; 2025 SwiftCart , Inc. All rights reservied.</p>
+                    <ul class="flex justify-center items-center">
+                        <li class="px-4 text-2xl font-semibold cursor-pointer"><i class="fa-brands fa-facebook-f"></i></li>
+                        <li class="px-4 text-2xl font-semibold cursor-pointer"><i class="fa-brands fa-twitter"></i></li>
+                        <li class="px-4 text-2xl font-semibold cursor-pointer"><i class="fa-brands fa-instagram"></i></li>
+                        <li class="px-4 text-2xl font-semibold cursor-pointer"><i class="fa-brands fa-linkedin-in"></i></li>
+                        <li class="px-4 text-2xl font-semibold cursor-pointer"><i class="fa-regular fa-message"></i></li>
+                    </ul>
+                </div>
+            </div>
+    </footer>
 
 
 
